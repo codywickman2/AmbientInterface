@@ -3,14 +3,25 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HTML Nest</title>
+        <link rel="stylesheet" href="style .css">
     </head>
 
-    <body onload="weatherAPI()">
-        <audio id="rain">
-            <source src="rain.mp3" type="audio/mpeg">
-        </audio>
-        <div id="weather">
+    <body>
+        <div class="dropdown">
+            <button onclick="run()" class="dropbtn">Weather</button>
+            <div id="myDropdown" class="dropdown-content">
+            <ul>
+                <div id="weather">
+                </div>
+            </ul>
+            </div>
         </div>
+
+        <div id="lat"></div>
+        <audio id="rain" preload="auto">
+            <source src="rain.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
         <script src="script.js"></script>
     </body>
 </html>
