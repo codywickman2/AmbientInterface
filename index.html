@@ -4,18 +4,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HTML Nest</title>
         <link rel="stylesheet" href="style .css">
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     </head>
 
-    <body>
-        <div class="dropdown">
-            <button onclick="run()" class="dropbtn">Weather</button>
-            <div id="myDropdown" class="dropdown-content">
-            <ul>
-                <div id="weather">
-                </div>
-            </ul>
-            </div>
+    <body onload="date()">
+        <p><span id="datetime"></span></p>
+        <p id="pp"></p>
+
+        <div onclick="run()">
+            <i class='fas fa-cloud-sun' style='font-size:90px'></i>
+            <div id="weather"></div>  
         </div>
+
 
         <div id="lat"></div>
         <audio id="rain" preload="auto">
