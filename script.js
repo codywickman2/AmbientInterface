@@ -1,7 +1,17 @@
 function run() {
-    myFunction();
     getLocation();
 }
+
+function date() {
+    var dt = new Date();
+    document.getElementById("datetime").innerHTML = dt.toLocaleTimeString();
+    
+    if (dt.toLocaleTimeString() > "6:00") {
+        var x = document.getElementById("pp");
+        x.innerHTML = "Good Evening";
+    }
+}
+
 var x = document.getElementById("lat");
 var aud = document.getElementById("rain");
 
@@ -13,23 +23,6 @@ function getLocation() {
     }
   }
 
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      }
-    }
-  }
-  
 function weatherAPI(position) {
     fetch('https://api.openweathermap.org/data/2.5/weather?lat='+position.coords.latitude+'&lon='+position.coords.longitude+'&appid=7f1759c88a7dded2a4f0d123937ba813')
         .then(response => response.json())
@@ -38,13 +31,13 @@ function weatherAPI(position) {
             weather.innerHTML=""
             currentTemp = data.main;
 
-            var tempFahrenheit = (currentTemp.temp) * 9/5 - 459.67
+            var tempFahrenheit = (currentTemp.temp) * 9/5 - 459.67;
             var p = document.createElement('p')
             var tNode = document.createTextNode(tempFahrenheit.toFixed(0))
             p.appendChild(tNode)
             weather.appendChild(p)
 
-            if (tempFahrenheit > 50) {
+            if (tempFahrenheit > 40) {
                 aud.play();
             }
         })
