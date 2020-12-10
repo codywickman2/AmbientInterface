@@ -26,9 +26,12 @@
         <div>
             <h1 id="time"></h1>
             <h1 id="date"></h1>
-        <div id="center" onclick="run()">
-            <td><i class='fas fa-cloud-sun' style="font-size:150px; text-align: center;"></i></td>
-        </div>
+            <div id="container">
+                <div id="buttonDiv">
+                    <button onclick="run()" class="weatherButton">Get Weather</button>
+                </div>
+            </div>
+     
         <div id="weatherDiv">
             <p style="text-align: center; font-size: 45px; color: white;" id="locationP"></p>
             <p style="text-align: center; font-size: 35px; color: white;" id="descriptionP"></p>
@@ -50,13 +53,23 @@
             Your browser does not support the audio element.
         </audio>
 
-        <audio id="birds" preload="auto">
-            <source src="birds.mp3" type="audio/mpeg">
+        <audio id="sunnyDay" preload="auto">
+            <source src="sunnyDay.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
 
         <audio id="crickets" preload="auto">
             <source src="crickets.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="ominous" preload="auto">
+            <source src="ominous.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="thunder" preload="auto">
+            <source src="thunder.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
 
