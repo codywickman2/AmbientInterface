@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,7 @@
         <link rel="stylesheet" href="style.css">
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     </head>
-    <body>
-        
+    <body onload="date()">
         
         <div class="welcome-section content-hidden">
             <div class="content-wrap">
@@ -25,24 +24,45 @@
             </div>
         </div>
         <div>
+            <h1 id="time"></h1>
+            <h1 id="date"></h1>
         <div id="center" onclick="run()">
-            <i class='fas fa-cloud-sun' style='font-size:90px'></i>
-            <div id="weather"></div>  
+            <td><i class='fas fa-cloud-sun' style="font-size:150px; text-align: center;"></i></td>
         </div>
+        <div id="weatherDiv">
+            <p style="text-align: center; font-size: 45px; color: white;" id="locationP"></p>
+            <p style="text-align: center; font-size: 35px; color: white;" id="descriptionP"></p>
+            <p style="text-align: center; font-size: 70px; color: white;" id="tempP"></p>
+            <p style="text-align: center; font-size: 35px; color: white;" id="hiLoP"></p>
+            <p style="text-align: center; font-size: 30px; color: rgb(255, 196, 0)" id="wind"></p>
+            <p style="text-align: center; font-size: 35px; color: white;" id="windSpeed"></p>
+            <p style="text-align: center; font-size: 30px; color: rgb(255, 196, 0);" id="feelsLike"></p>
+            <p style="text-align: center; font-size: 35px; color: white;" id="feelsLikeTemp"></p>
+            <p style="text-align: center; font-size: 30px; color: rgb(255, 196, 0);" id="humidity"></p>
+            <p style="text-align: center; font-size: 35px; color: white;" id="humidityPercent"></p>
+            <p style="text-align: center; font-size: 30px; color: rgb(255, 196, 0);" id="pressure"></p>
+            <p style="text-align: center; font-size: 35px; color: white;" id="pressureAmt"></p>
+        </div>
+            
+        
         <audio id="rain" preload="auto">
             <source src="rain.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
 
+        <audio id="birds" preload="auto">
+            <source src="birds.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="crickets" preload="auto">
+            <source src="crickets.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
         <div id="weather"></div>
     </div>
-        
-        
-        
-        
-        
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="script.js"></script>
     </body>
 </html>
