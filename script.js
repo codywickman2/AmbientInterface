@@ -1,6 +1,8 @@
 var aud2 = document.getElementById("rain");
-var birdsChirp = document.getElementById("birds");
+var sunnyDay = document.getElementById("sunnyDay");
 var cricketsSound = document.getElementById("crickets");
+var thunderSound = document.getElementById("thunder");
+var ominousSound = document.getElementById("ominous");
 var startSound = document.getElementById("start");
 var synth = window.speechSynthesis;
 var voices = [];
@@ -252,15 +254,30 @@ function weatherAPI(position) {
             document.getElementById("pressure").innerHTML = "PRESSURE";
             document.getElementById("pressureAmt").innerHTML = pressureHg.toFixed(2) + " inHg";
 
-            if (new Date().getHours() >= 5) {
-              playBirds();
+            if (new Date().getHours() >= 5 && tempFahrenheit <= 85 && tempFahrenheit >= 60) {
+              playSunnyDay();
             }
             if (new Date().getHours() >= 19) {
               playCrickets();
+              playOminous();
             }
-            if (new Date().getHours() >= 0) {
+            if (new Date().getHours() >= 0 && new Date().getHours() <= 4) {
               playCrickets();
+              playOminous();
             }
+
+            if (new Date().getHours() >= 7 && tempFahrenheit <= 59) {
+              playOminous();
+            }
+
+            if (tempFahrenheit >= 0 && tempFahrenheit <= 70) {
+              coldWeather();
+            }
+
+            if (tempFahrenheit >= 71 && tempFahrenheit <= 90) {
+              niceWeather();
+            }
+
             speak(tempFahrenheit, tempHigh, tempLow, description);
         });
 
@@ -321,12 +338,20 @@ function overcast() {
   document.body.style.backgroundImage = "url('overcast.jpg')";
 }
 
-function playBirds() {
-  birdsChirp.play();
+function playSunnyDay() {
+  sunnyDay.play();
 }
 
 function playCrickets() {
   cricketsSound.play();
+}
+
+function playThunder() {
+  thunderSound.play();
+}
+
+function playOminous() {
+  ominousSound.play();
 }
 
 
@@ -336,13 +361,13 @@ function welcomeSpeech() {
   var toSpeak;
 
   if (timeOfDay >= 0) {
-    toSpeak = new SpeechSynthesisUtterance("Good morning, I am Jarvis, please click the sun icon and I will tell you the weather conditions for the day");
+    toSpeak = new SpeechSynthesisUtterance("Good morning, I am Jarvis, please click the Get Weather button and I will tell you the weather conditions for the day");
   }
   if (timeOfDay >=12) {
-    toSpeak = new SpeechSynthesisUtterance("Good evening, I am Jarvis, please click the sun icon and I will tell you the weather conditions for the day");
+    toSpeak = new SpeechSynthesisUtterance("Good afternoon, I am Jarvis, please click the get weather button and I will tell you the weather conditions for the day");
   }
   if (timeOfDay >= 18) {
-    toSpeak = new SpeechSynthesisUtterance("Good evening, I am Jarvis, please click the sun icon and I will tell you the weather conditions tonight");
+    toSpeak = new SpeechSynthesisUtterance("Good evening, I am Jarvis, please click the get weather button and I will tell you the weather conditions tonight");
   }
   
   var selectedVoiceName = "Google UK English Female";
@@ -354,6 +379,30 @@ function welcomeSpeech() {
   });
     synth.speak(toSpeak);
 };
+
+function coldWeather() {
+  var toSpeak = new SpeechSynthesisUtterance("You may want a jacket.");
+  var selectedVoiceName = "Google UK English Female";
+
+  voices.forEach((voice)=>{
+    if(voice.name === selectedVoiceName){
+    toSpeak.voice = voice;
+    }
+  });
+  synth.speak(toSpeak);
+}
+
+function niceWeather() {
+  var toSpeak = new SpeechSynthesisUtterance("It is a beautiful day.");
+  var selectedVoiceName = "Google UK English Female";
+
+  voices.forEach((voice)=>{
+    if(voice.name === selectedVoiceName){
+    toSpeak.voice = voice;
+    }
+  });
+  synth.speak(toSpeak);
+}
 
 function playRain() {
   aud2.play();
