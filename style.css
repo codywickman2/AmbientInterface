@@ -1,3 +1,18 @@
+h1 {
+    text-align: center;
+    margin: 0px auto;
+    display: block;
+    color: white;
+}
+
+.weatherDiv {
+    border: 3px solid black;
+    padding: 10px;
+}
+
+td {
+    margin: 0 auto;
+}
 .center {
     margin: auto;
     width: 60%;
@@ -13,6 +28,8 @@ body {
     margin: 10;
     padding: 10;
     background-image: url(bground.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
     font-family: 'Open Sans', Arial, sans-serif;
     font-weight: 700;
@@ -24,7 +41,7 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: #000;
+    background-image: url(weather.jpg);
     overflow: hidden;
 }
 
@@ -43,7 +60,7 @@ body {
     display: inline-block;
     margin-right: 30px;
     font-size: 5em;
-    color: #fff;
+    color: whitesmoke;
     opacity: 1;
     transition: all 2s ease;
 }
