@@ -1,19 +1,28 @@
+var aud2 = document.getElementById("rain");
+var btnSpeak = document.querySelector('#center');
+var synth = window.speechSynthesis;
+var voices = [];
+
+$(function(){
+    var welcomeSection = $('.welcome-section'),
+    enterButton = welcomeSection.find('.enter-button');
+    
+    setTimeout(function() {
+        welcomeSection.removeClass('content-hidden');
+    }, 500);
+    
+    enterButton.on('click', function(e) {
+        document.getElementById("start").play()
+        e.preventDefault();
+        welcomeSection.addClass('content-hidden').fadeOut();
+    });
+                
+                
+})();
+
 function run() {
     getLocation();
 }
-
-function date() {
-    var dt = new Date();
-    document.getElementById("datetime").innerHTML = dt.toLocaleTimeString();
-    
-    if (dt.toLocaleTimeString() > "6:00") {
-        var x = document.getElementById("pp");
-        x.innerHTML = "Good Evening";
-    }
-}
-
-var x = document.getElementById("lat");
-var aud = document.getElementById("rain");
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -22,6 +31,7 @@ function getLocation() {
       x.innerHTML = "Geolocation is not supported by this browser.";
     }
   }
+
 
 function weatherAPI(position) {
     fetch('https://api.openweathermap.org/data/2.5/weather?lat='+position.coords.latitude+'&lon='+position.coords.longitude+'&appid=7f1759c88a7dded2a4f0d123937ba813')
@@ -37,8 +47,27 @@ function weatherAPI(position) {
             p.appendChild(tNode)
             weather.appendChild(p)
 
-            if (tempFahrenheit > 40) {
-                aud.play();
-            }
-        })
+            speak(tempFahrenheit);
+        });
+
+}
+
+if(speechSynthesis !== undefined){
+    speechSynthesis.onvoiceschanged = PopulateVoices;
+}
+
+function speak(tempFahrenheit) {
+    var toSpeak = new SpeechSynthesisUtterance("The weather right now is " + tempFahrenheit.toFixed(0) + "degrees");
+    var selectedVoiceName = "Google UK English Female";
+    voices.forEach((voice)=>{
+        if(voice.name === selectedVoiceName){
+            toSpeak.voice = voice;
+        }
+    });
+    synth.speak(toSpeak);
+    
+};
+
+function PopulateVoices(){
+    voices = synth.getVoices();
 }
