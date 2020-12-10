@@ -89,3 +89,20 @@ body {
     .welcome-section .content-wrap .fly-in-text li { font-size: 10em; }
     .welcome-section .content-wrap .enter-button { font-size: 1.5em; }
 }
+
+@media screen and (max-width: 700px) {
+    .sidenav {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidenav a {float: left;}
+    div.content {margin-left: 0;}
+}
+  
+@media screen and (max-width: 400px) {
+    .sidenav a {
+      text-align: center;
+      float: none;
+    }
+}
