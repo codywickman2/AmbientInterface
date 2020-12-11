@@ -290,6 +290,7 @@ if(speechSynthesis !== undefined){
 }
 
 //Function that takes the weather parameters and tells the user the current weather conditions 
+//Got help with this function from https://github.com/Nitij/JavaScriptSpeechSynthesis/blob/master/index.html
 function speak(tempFahrenheit, tempHigh, tempLow, description) {
   var timeOfDay = new Date().getHours();
   var toSpeak;
