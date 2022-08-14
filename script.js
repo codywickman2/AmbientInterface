@@ -254,7 +254,7 @@ function weatherAPI(position) {
             document.getElementById("pressure").innerHTML = "PRESSURE";
             document.getElementById("pressureAmt").innerHTML = pressureHg.toFixed(2) + " inHg";
 
-            if (new Date().getHours() >= 11 && tempFahrenheit <= 85 && tempFahrenheit >= 60) {
+            if (new Date().getHours() >= 11 && tempFahrenheit <= 100 && tempFahrenheit >= 60) {
               playSunnyDay();
             }
             if (new Date().getHours() >= 19) {
